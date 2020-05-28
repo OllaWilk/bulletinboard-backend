@@ -13,7 +13,6 @@ const postSchema = new mongoose.Schema({
     shipping: { type: String },
     image: { type: String },
     price: { type: Number, required: true },
-    //userId: [{ type: mongoose.SchemaTypes.ObjectId, required: true, ref: 'User' }],
     userId: { type: String, required: false, ref: 'User'},
 },
     { versionKey: false }

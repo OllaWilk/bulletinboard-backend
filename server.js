@@ -31,9 +31,16 @@ app.use(express.static(path.join(__dirname, '/client/build')));
 app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build/index.html'));
 });
+app.use((req, res) => {
+  res.status(404).json({ message: 'Not found...' });
+});
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/bulletinBoard', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://localhost:27017/bulletinBoard', { useNewUrlParser: true, useUnifiedTopology: true });
+
+mongoose.connect(`mongodb+srv://ollaWilk:bulletinBoard108@bulletinboard-r8pav.mongodb.net/bulletinBoard?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
+
+
 const db = mongoose.connection;
 db.once('open', () => {
   console.log('Successfully connected to the database');
