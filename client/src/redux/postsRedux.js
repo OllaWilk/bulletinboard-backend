@@ -57,7 +57,7 @@ export const addPostRequest = (data) => {
 
     dispatch(fetchStarted());
     try {
-      let res = await axios.post( `${API_URL}/post/add`, data);
+      let res = await axios.post( `${API_URL}/posts/add`, data);
       dispatch(addPost(res.data));
     } catch(err) {
       dispatch(fetchError(err.message || true));
