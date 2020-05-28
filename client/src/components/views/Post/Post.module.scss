@@ -1,0 +1,36 @@
+@import '../../../styles/settings.scss';
+
+.root {
+    .cardImage {
+        height: 700px;
+        object-fit: cover;
+    }
+
+    .title {
+        font-weight: bold;
+        color: $color-dark_red;
+        &::first-letter{
+            text-transform: uppercase;
+        }
+    }
+
+    .items {
+        font-weight: bold;
+        font-family: poppins;
+    }
+
+    .map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+        margin-top: 10px;
+    }
+
+    .button {
+        margin: 40px 0;
+    }
+
+    .footer small {
+        display: block;
+    }
+}

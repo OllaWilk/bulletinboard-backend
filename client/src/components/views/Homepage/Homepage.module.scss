@@ -1,0 +1,44 @@
+@import "../../../styles/settings.scss";
+
+.root {
+
+    .button {
+        display: flex;
+        justify-content: center;
+        background-color: $color-dark_red;
+        border: $color-dark_red;
+    }
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .el{
+            flex: 0 0 33%;
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .cardImage {
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .link {
+            color: $color-dark_red;
+            &:hover {
+                color: $color-dark_red;
+            }
+        }
+
+        .titleLink {
+            a {
+                color:  $color-dark_red;
+            }
+            &::first-letter{
+                text-transform: uppercase;
+            }
+        }
+    }
+}
