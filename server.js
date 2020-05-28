@@ -15,7 +15,7 @@ app.use(cors({
     // "origin": "http://localhost:3000",
 }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 /* API ENDPOINTS */
 app.use('/api', postsRoutes);
@@ -27,9 +27,9 @@ app.use('/api', (req, res) => {
 });
 
 /* REACT WEBSITE */
-app.use(express.static(path.join(__dirname, '/client/build')));
+app.use(express.static(path.join(__dirname, './client/build')));
 app.use('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build/index.html'));
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found...' });

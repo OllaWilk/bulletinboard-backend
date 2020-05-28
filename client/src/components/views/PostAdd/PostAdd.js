@@ -239,7 +239,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addPost: post => dispatch(addPostRequest(post)),
+  addPost: data => dispatch(addPostRequest(data)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

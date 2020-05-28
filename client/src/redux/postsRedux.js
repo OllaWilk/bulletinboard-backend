@@ -30,11 +30,11 @@ const EDIT_POST = createActionName('EDIT_POST');
 
 
 /* action creators */
-export const fetchStarted = payload => ({ payload, type: FETCH_START });
-export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
-export const fetchError = payload => ({ payload, type: FETCH_ERROR });
-export const addPost = payload => ({ payload, type: ADD_POST });
-export const editPost = payload => ({ payload, type: EDIT_POST });
+export const fetchStarted = (payload) => ({ payload, type: FETCH_START });
+export const fetchSuccess = (payload) => ({ payload, type: FETCH_SUCCESS });
+export const fetchError = (payload) => ({ payload, type: FETCH_ERROR });
+export const addPost = (payload) => ({ payload, type: ADD_POST });
+export const editPost = (payload) => ({ payload, type: EDIT_POST });
 
 /* thunk creators */
 
@@ -51,6 +51,21 @@ export const fetchAllPosts = () => {
   };
 };
 
+export const fetchAllPosts = () => {
+  return (dispatch, getState) => {
+    try {
+      const { posts } = getState();
+      if (!posts.data.length || posts.loading.active === false) {
+        dispatch(fetchStarted());
+        axios.get('http://localhost:8000/api/posts').then((res) => {
+          dispatch(fetchSuccess(res.data));
+        });
+      }
+    } catch (err) {
+      dispatch(fetchError(err.message || true));
+    }
+  };
+};
 
 export const addPostRequest = (data) => {
   return async dispatch => {
