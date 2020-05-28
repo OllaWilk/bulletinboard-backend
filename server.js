@@ -41,7 +41,7 @@ db.once('open', () => {
 db.on('error', err => console.log('Error: ' + err));
 
 /* START SERVER */
-const port = process.env.NODE_ENV || 8000;
+const port = process.env.PORT|| 8000;
 app.listen(port, () => {
   console.log('Server is running on port: '+ port);
 });
